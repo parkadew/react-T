@@ -1,0 +1,125 @@
+
+react-router-dom을 사용해서 주소를 감지하여 주소에 맞는 컴포넌트를 보여줬음
+
+ex)
+옷쇼핑몰 웹사이트에 접속 -> 물품 상세보기를 클릭
+(seongyong.com) -> (seongyong.com/product)
+
+메인피이지 -> 상세보기페이지
+
+- 백엔드에 이달의 인기 상품 목록 요청 (메인페이지)
+- 상품의 고유한 값을 전달하여 해당 상품의 상세한 정보 요청 (상세페이지) - 상품의 고유한 값??????
+
+seongyong.com/product?goods=23241223
+
+주소에 전달된 데이터를 가지고올 수 있는 방법 - url parameter
+
+1. useSearchParams (query-string)
+seongyong.com/product?goods=23241223
+
+const [searchParams, setSearchParams] = useSearchParams()
+searchParams.get("goods") // 23241223
+
+
+-------------------------------------------------------
+
+2. useParams (url-parameter)
+
+seongyong.com/product/3123242
+
+    path: /todo/:todoId
+    element: <TodoPage/>
+todopage.js
+    >>> const { todoId } = useParams() // 3123242
+
+
+-------------------------------------------------------
+
+1. 데이터를 주소를 통해 전달할 수 있다
+2. react-router-dom은 단순하게 URL은 맵핑해주는 역할만 하는 것이아니 주소를 다루는 다양한 함수를 지원
+
+-------------------------------------------------------
+
+url-parameter
+navigation
+styled-components 
+
+-------------------------------------------------------
+
+번들(bundle)
+    -> 너저분하게 분리된 리소스들을 특정 기준으로 분리하여
+    사용자에게 화면이 보여지는 시간을 감소하는 작업
+
+    트리쉐이킹 : 사용하지 않는 불필요하는 코드는 제거하요 필요한 코드들만 사용
+    => bundle.js => 번들링 된 결과물
+
+-------------------------------------------------------
+
+ react style sheet
+
+    1. css - in - js
+        js 파일에 css 문법 작성이 가능한 스타일링 방법
+        ex) styled-components, emotion, styleX
+
+        현재는 실무에서 가장 많이 사용되는 방법
+
+    2. pure css / scss + (post css)
+        일반적인 css, class 구분이 어려웠음 하지만 post css를 사용하면
+        app.module.css를 통해서 해당 컴포넌트에서만 사용할 수 있는 css를 import
+
+    3. tailwindcss / panda-css
+        가장 최근 스택에서는 자주 사용되는 스타일 시트
+        <div class="w300 h200">...</div>
+
+-------------------------------------------------------
+
+    styled-components
+        스타일된 컴포넌트를 생성해서 요소 대신 생성된 컴포넌트를 활용하는 방법
+
+        const Wrapper = styled.div`
+            css문법
+        `
+
+        <Wrapper>
+            <div>
+                ...
+        </Wrapper>
+
+        npm i styled-components
+
+-------------------------------------------------------
+
+    html
+        ->> 박스모델 -> 구조 잡는 방법
+        => 강사님 요소는 알겠는데 html 작성하라고 하면 작성 못하겠어요
+
+    css
+        ->> 경험, 안보고도 똑같이 만들 수 있어야함
+
+    javascript
+        ->> 함수를 정의하는 주체(자신) --> 이 함수는 이러한 기능을 하는 함수야
+        --> 코인(인풋), 상품과 잔돈(아웃풋)
+
+        --> 수학(답을 모르고 답을 찾아가는 과정)
+        --> 코딩(답을 알고 그 과정을 순서대로 추론하는 과정)
+        --> 답(최종적으로 작성해야하는 코드)을 모르면 못푸는 코드
+
+        ->> 자바스크립트는 항상 뒤에서부터 필요한 값이 무엇인지 찾아야한다
+        ->> 연산을 진행할 때는 항상 자연어로 먼저 풀이를 하고 자연어를 코딩으로 옮기는 것이 좋습니다.
+
+    react
+        ->> 컴포넌트와 모듈 -- 나누는 기준
+        --> 관심사 분리 -> 관리해야하는 포인트를 줄이는 것
+
+        console.log("a") x 10 => 10번 수정
+        
+        function console (){
+            console.log("a")
+        } => console() X 10 => 1번 수정
+
+        >> 얻어가야하는 것 : 리엑트 개념, 리엑트의 장점과 가치관
+
+        ->> 상태관리
+        --> state(상태) -> 화면을 리랜더링
+        --> 불필요한 상태 만들지 않기 ---> 개발자의 의도 하에 화면을 바꾼다 
+        --> 필요한 컴포넌트에 상태 위치하기
